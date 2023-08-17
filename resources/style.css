@@ -1,0 +1,225 @@
+:root {
+    --clr-bg-main: 42, 85%, 61%;
+    --clr-box-shadow: 44, 51%, 51%;
+    --clr-input-bg: 46, 76%, 90%;
+
+    --clr-text-hsl: 0, 0%, 0%;
+
+    --clr-text: hsl(var(--clr-text-hsl));
+
+    --font-family-default: "Nunito", sans-serif;
+    --font-family-secondary: "PT Sans", sans-serif;
+
+    --fs-200: 1.25rem;
+    --fs-900: 3rem;
+
+    --fw-400: 400;
+    --fw-500: 500;
+    --fw-700: 700;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    background-color: hsl(var(--clr-bg-main), .55);
+    color: var(--clr-text);
+    font-family: var(--font-family-default);
+    margin: 1rem;
+}
+
+.top-header {
+    display: grid;
+    place-content: center;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.top-header h1 {
+    font-size: var(--fs-900);
+    font-weight: var(--fw-700);
+}
+
+.top-header p {
+    font-size: var(--fs-200);
+    margin-top: .5rem;
+}
+
+.todo-form {
+    display: grid;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 500px) {
+    .todo-form {
+        display: flex;
+    }
+}
+
+#todo-item {
+    border: none;
+    box-shadow: 2px 2px 3px hsl(var(--clr-box-shadow));
+    background-color: hsl(var(--clr-input-bg));
+    padding: 1rem .75rem;
+    border-radius: 1rem;
+    border: 2px solid hsl(var(--clr-text-hsl), .25);
+}
+
+#todo-item:focus {
+    outline: none !important;
+    border: 2px solid hsl(var(--clr-bg-main));
+}
+
+.todo-button {
+    padding: .75rem 2rem;
+    font-weight: var(--fw-700);
+    font-size: var(--fs-200);
+    font-family: var(--font-family-secondary);
+    letter-spacing: 1px;
+    border-radius: 1.25rem;
+    border: 2px solid hsl(var(--clr-input-bg));
+    background-color: hsl(var(--clr-bg-main));
+    color: hsla(0, 100%, 100%, .85);
+    box-shadow: 2px 2px 3px hsl(var(--clr-box-shadow));
+    transition: all .1s ease-in-out;
+}
+
+.todo-button:active {
+    position: relative;
+    top: 2px;
+    left: 2px;
+    box-shadow: none;
+}
+
+.todo-main {
+    display: grid;
+    grid-auto-flow: row;
+    justify-items: start;
+    gap: 1rem;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    background-color: hsl(var(--clr-input-bg), .9);
+    padding: .75rem 1.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 4px 4px hsl(var(--clr-box-shadow));
+    word-break: break-all;
+    transition: all .1s ease-in;
+}
+
+.list-item:hover {
+    cursor: pointer;
+}
+
+.list-item:active {
+    position: relative;
+    top: 4px;
+    left: 4px;
+    box-shadow: none;
+}
+
+.checkbox {
+    width: 1.25rem;
+    min-width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid hsl(var(--clr-box-shadow));
+    border-radius: .15rem;
+    margin-right: 1rem;
+}
+
+.list-item:active {
+    position: relative;
+    top: 4px;
+    left: 4px;
+    box-shadow: none;
+}
+
+.item-text {
+    letter-spacing: .5px;
+}
+
+.fa-trash {
+    font-size: var(--fs-200);
+    margin-left: 1.5rem;
+    color: hsl(0, 100%, 60%);
+}
+
+.fa-trash:active {
+    color: hsl(0, 100%, 40%);
+}
+
+.custom-alert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(0, 0%, 0%, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-alert-content {
+    background-color: #f1f1f1;
+    padding: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#custom-alert-message {
+    margin-bottom: 1.5rem;
+    font-size: var(--fs-200);
+}
+
+#custom-alert-okay {
+    background-color: hsl(var(--clr-bg-main));
+    color: var(--clr-text);
+    font-weight: var(--fw-500);
+    border: none;
+    padding: .5rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.checked {
+    position: relative;
+}
+
+.checked::before {
+    content: "\2713";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: green;
+    font-weight: 900;
+    font-size: var(--fs-200);
+}
+
+.crossed {
+    color: hsl(var(--clr-text-hsl), .5);
+    text-decoration: line-through;
+}
+
+i.hidden {
+    display: none;
+}
